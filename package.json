@@ -1,6 +1,6 @@
 {
-  "name": "Customer Invoice Manager",
-  "version": "0.1",
+  "name": "customer-invoice-manager",
+  "version": "0.1.0",
   "private": true,
   "repository": {
     "type": "git",
