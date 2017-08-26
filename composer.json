@@ -1,0 +1,15 @@
+{
+    "require": {
+        "mikehaertl/phpwkhtmltopdf": "^2.2",
+        "illuminate/database": "^5.4",
+        "twig/twig": "^2.4",
+        "psr/log": "^1.0",
+        "illuminate/filesystem": "^5.4",
+        "symfony/process": "^3.3",
+        "doctrine/dbal": "^2.6",
+        "illuminate/console": "^5.4",
+        "illuminate/events": "^5.4",
+        "mtdowling/cron-expression": "^1.2",
+        "illuminate/pagination": "^5.4"
+    }
+}
