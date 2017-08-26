@@ -39,11 +39,8 @@ class Cim
 
     public function run()
     {
-        $klein = $this->getKleinInstance();
-
-        $klein->respond('GET', '/hello-world', function () {
-            echo 'Hello World!';
-        });
+        $route = new Routes($this->getKleinInstance());
+        $routeData = $route->getRouteData();
     }
 
     private function getKleinInstance()

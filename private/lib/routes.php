@@ -9,12 +9,34 @@
 
 class Routes
 {
+    private $klein = null;
+
+    public function __construct($kleinInstance)
+    {
+        $this->klein = $kleinInstance;
+    }
+
     /**
      * @param $queryString string the query string
      * @return array
      */
-    public static function getRouteData($queryString)
+    public function getRouteData($queryString)
     {
-        return array('s');
+        $this->klein->respond('GET', '/hello-world', function () {
+            return 'Hello World!';
+        });
+
+        // Throw 404 when there are no matching routes
+        $klein->respond(function () {
+            return $this->buildReturnData('Cim_Frontend_Page_NotFond');
+        });
+    }
+
+    private function buildReturnData($handlerClass, $requestData = null)
+    {
+        return [
+            'requestData' => $requestData,
+            'handler' => $handlerClass,
+        ];
     }
 }
