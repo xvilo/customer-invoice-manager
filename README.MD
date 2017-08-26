@@ -6,7 +6,7 @@ Custom invoice manager is a small php application made from scratch. Why I made 
   - To learn more about OOP PHP (and practice it)
   - Magic ✨
 
-# Features
+## Features
 
   - Twig templating
   - Inovice to PDF
