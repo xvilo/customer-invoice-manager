@@ -1,4 +1,11 @@
 <?php
+/**
+ * Cim - A simple invoice manager
+ *
+ * @author      Sem Schilder <sem@tropical.email>
+ * @copyright   (c) Sem Schilder
+ * @link        https://github.com/xvilo/customer-invoice-manager
+ */
 
 // Autoloading all composer packages
 require_once __DIR__.'/../vendor/autoload.php';

@@ -1,15 +1,18 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: xvilo
- * Date: 8/26/17
- * Time: 7:33 PM
+ * Cim - A simple invoice manager
+ *
+ * @author      Sem Schilder <sem@tropical.email>
+ * @copyright   (c) Sem Schilder
+ * @link        https://github.com/xvilo/customer-invoice-manager
  */
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
 Class Cim {
+    private $kleinInstance = null;
 
     function __construct($settings)
     {
@@ -33,7 +36,21 @@ Class Cim {
         $capsule->setAsGlobal();
     }
 
-    public function run(){
-        echo 'run';
+    public function run()
+    {
+        $klein = $this->getKleinInstance();
+
+        $klein->respond('GET', '/hello-world', function () {
+            echo 'Hello World!';
+        });
+    }
+
+    private function getKleinInstance()
+    {
+        if($this->kleinInstance == null){
+            $this->kleinInstance = new Klein\Klein;
+        }
+
+        return $this->kleinInstance;
     }
 }

@@ -30,6 +30,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/pagination" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/klein/klein" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/php-shellcommand" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/php-tmpfile" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikehaertl/phpwkhtmltopdf" />
@@ -76,6 +77,7 @@
           <root url="file://$MODULE_DIR$/vendor/illuminate/filesystem" />
           <root url="file://$MODULE_DIR$/vendor/illuminate/pagination" />
           <root url="file://$MODULE_DIR$/vendor/illuminate/support" />
+          <root url="file://$MODULE_DIR$/vendor/klein/klein" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/php-shellcommand" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/php-tmpfile" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/phpwkhtmltopdf" />
@@ -108,6 +110,7 @@
           <root url="file://$MODULE_DIR$/vendor/illuminate/filesystem" />
           <root url="file://$MODULE_DIR$/vendor/illuminate/pagination" />
           <root url="file://$MODULE_DIR$/vendor/illuminate/support" />
+          <root url="file://$MODULE_DIR$/vendor/klein/klein" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/php-shellcommand" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/php-tmpfile" />
           <root url="file://$MODULE_DIR$/vendor/mikehaertl/phpwkhtmltopdf" />
