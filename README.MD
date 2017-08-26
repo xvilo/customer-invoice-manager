@@ -4,7 +4,7 @@ Custom invoice manager is a small php application made from scratch. Why I made 
 
   - To keep track of my invoices.
   - To learn more about OOP PHP (and practice it)
-  - Magic ✨
+  - Magic  
 
 ## Features
 
@@ -21,8 +21,9 @@ Custom invoice manager is a small php application made from scratch. Why I made 
 1) From the command line:
 ```sh
 $ git clone git@github.com:xvilo/customer-invoice-manager.git
-$ composer install 
+$ composer install
 ```
 2) Copy `settings-sample.php` to `settings.php`
 3) Edit settings.php accordingly
 4) Set your http root to `public/`
+
