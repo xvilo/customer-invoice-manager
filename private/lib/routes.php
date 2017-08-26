@@ -7,15 +7,14 @@
  * @link        https://github.com/xvilo/customer-invoice-manager
  */
 
-Class Routes
+class Routes
 {
     /**
      * @param $queryString string the query string
      * @return array
      */
-    static function getRouteData($queryString)
+    public static function getRouteData($queryString)
     {
         return array('s');
-
     }
 }

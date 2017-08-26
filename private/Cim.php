@@ -11,10 +11,11 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
-Class Cim {
+class Cim
+{
     private $kleinInstance = null;
 
-    function __construct($settings)
+    public function __construct($settings)
     {
         $capsule = new Capsule;
 
@@ -47,7 +48,7 @@ Class Cim {
 
     private function getKleinInstance()
     {
-        if($this->kleinInstance == null){
+        if ($this->kleinInstance == null) {
             $this->kleinInstance = new Klein\Klein;
         }
 
