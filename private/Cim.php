@@ -11,10 +11,20 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
+/**
+ * Class Cim
+ */
 class Cim
 {
+    /**
+     * @var \Klein\Klein
+     */
     private $kleinInstance = null;
 
+    /**
+     * Cim constructor.
+     * @param $settings
+     */
     public function __construct($settings)
     {
         $capsule = new Capsule;
@@ -37,12 +47,23 @@ class Cim
         $capsule->setAsGlobal();
     }
 
+    /**
+     * Main function to start application.
+     * Gets route data first then creates
+     * a new instance for that date gotten by
+     * the Route class.
+     */
     public function run()
     {
         $route = new Routes($this->getKleinInstance());
         $routeData = $route->getRouteData();
+        die(var_dump($routeData));
     }
 
+    /**
+     * Gets an instance of Klein.php.
+     * @return \Klein\Klein
+     */
     private function getKleinInstance()
     {
         if ($this->kleinInstance == null) {
