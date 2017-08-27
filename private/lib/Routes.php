@@ -40,6 +40,10 @@ class Routes
      */
     private function generateRouteData()
     {
+        $this->klein->respond('GET', '/', function () {
+            $this->routeData = $this->buildReturnData('Cim_Frontend_Page_Entry');
+        });
+
         $this->klein->respond('GET', '/hello-world', function () {
             $this->routeData = $this->buildReturnData('Cim_Frontend_Page_HelloWorld');
         });

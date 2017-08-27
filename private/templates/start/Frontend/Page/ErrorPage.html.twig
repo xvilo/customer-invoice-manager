@@ -1,7 +1,11 @@
-{% if code == 404 %}
-    <h1>404 Not Found!</h1>
-    <p>De page you're looking for could not be found.</p>
-{% else %}
-    <h1>Something went wrong!</h1>
-    <p>:(</p>
-{% endif %}
+{% extends "Frontend/base.html.twig" %}
+
+{% block content %}
+    {% if code == 404 %}
+        <h1>404 Not Found!</h1>
+        <p>De page you're looking for could not be found.</p>
+    {% else %}
+        <h1>Something went wrong!</h1>
+        <p>:(</p>
+    {% endif %}
+{% endblock %}
