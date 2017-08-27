@@ -27,3 +27,6 @@ $ composer install
 3) Edit settings.php accordingly
 4) Set your http root to `public/`
 
+## Development
+If you want to read more information about the frontend development process. 
+Please use the [DEVELOPMENT.md file](DEVELOPMENT.md)
