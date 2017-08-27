@@ -34,5 +34,8 @@
     "run-sequence": "^1.1.5",
     "svg-sprite": "^1.2.16",
     "webpack-stream": "^2.3.0"
+  },
+  "devDependencies": {
+    "webpack-closure-compiler": "^2.1.5"
   }
 }
