@@ -67,7 +67,8 @@ class Cim_Frontend_Page
 
         $twig = new Twig_Environment($loader, $twigSettings);
 
-        if(isset($_GET['context'])){
+        // TODO: Protect this function. Can be accessed and thus exploited by everyone.
+        if(Settings::get('development') AND isset($_GET['context'])){
             // Context parameter is set. Dump all context data for Twig render and exit.
             echo '<pre>';
             die(print_r( $this->getTwigData($requestData, $this->pageData()) ));
