@@ -15,4 +15,7 @@ $settings = [
         'database' => 'database_name',
     ],
     'use-cache' => true,
+    'application-dir' => __DIR__,
+    'active-template' => 'start',
+    'development' => false,
 ];
