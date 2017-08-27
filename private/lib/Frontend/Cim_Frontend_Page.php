@@ -34,9 +34,9 @@ class Cim_Frontend_Page
             $twigPath = str_replace("Cim_", "", $className);
             $twigPath = str_replace("_", "/", $twigPath);
             $templateFile = $twigPath . ".html.twig";
+        }else{
+            $templateFile = $this->templatePath . ".html.twig";
         }
-
-        $templateFile = $this->templatePath . ".html.twig";
 
         return $templateFile;
     }
