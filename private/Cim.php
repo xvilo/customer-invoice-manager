@@ -27,6 +27,8 @@ class Cim
      */
     public function __construct($settings)
     {
+
+        // Setup Database
         $capsule = new Capsule;
 
         $capsule->addConnection([
@@ -45,6 +47,10 @@ class Cim
 
         // Make this Capsule instance available globally via static methods... (optional)
         $capsule->setAsGlobal();
+
+        // Set Settings
+        $settings = new Settings($settings);
+        $settings->setAsGlobal();
     }
 
     /**

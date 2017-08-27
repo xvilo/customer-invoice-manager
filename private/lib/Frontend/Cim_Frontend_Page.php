@@ -14,13 +14,16 @@ class Cim_Frontend_Page
 {
     protected $templatePath = null;
     private $templateFile = null;
+    private $activeTemplate = 'start';
+    private $templateDir = '../../templates/';
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
      */
-    public function __construct()
+    public function __construct($requestData)
     {
         $this->templateFile = $this->getTemplateFile();
+        $this->loadTemplate($requestData);
     }
 
     final private function getTemplateFile()
@@ -35,5 +38,15 @@ class Cim_Frontend_Page
         $templateFile = $this->templatePath . ".html.twig";
 
         return $templateFile;
+    }
+
+    final private function loadTemplate($requestData)
+    {
+        $loader = new Twig_Loader_Filesystem($this->templateDir.$this->activeTemplate);
+        $twig = new Twig_Environment($loader, array(
+            'cache' => '../../../var/cache/',
+        ));
+
+        echo $twig->render($this->templateFile, $requestData);
     }
 }
