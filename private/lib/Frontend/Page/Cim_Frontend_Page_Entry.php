@@ -12,4 +12,14 @@
  */
 class Cim_Frontend_Page_Entry extends Cim_Frontend_Page
 {
+
+    /**
+     * Page data. Array of data used in twig.
+     *
+     * @return array
+     */
+    public function pageData()
+    {
+        return [];
+    }
 }

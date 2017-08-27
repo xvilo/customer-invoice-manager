@@ -27,6 +27,17 @@ class Cim_Frontend_Page
         $this->loadTemplate($requestData);
     }
 
+
+    /**
+     * Page data. Array of data used in twig.
+     *
+     * @return array
+     */
+    protected function pageData()
+    {
+        return [];
+    }
+
     final private function getTemplateFile()
     {
         if ($this->templatePath === null) {
@@ -54,6 +65,14 @@ class Cim_Frontend_Page
 
         $twig = new Twig_Environment($loader, $twigSettings);
 
-        echo $twig->render($this->templateFile, $requestData);
+        echo $twig->render($this->templateFile, $this->getTwigData($requestData, $this->pageData()));
+    }
+
+    final private function getTwigData($requestData = [], $pageData = [])
+    {
+        return [
+            'requestData' => $requestData,
+            'pageData' => $pageData
+        ];
     }
 }
