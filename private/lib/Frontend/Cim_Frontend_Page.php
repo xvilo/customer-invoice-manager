@@ -34,7 +34,7 @@ class Cim_Frontend_Page
             $twigPath = str_replace("Cim_", "", $className);
             $twigPath = str_replace("_", "/", $twigPath);
             $templateFile = $twigPath . ".html.twig";
-        }else{
+        } else {
             $templateFile = $this->templatePath . ".html.twig";
         }
 
@@ -48,7 +48,7 @@ class Cim_Frontend_Page
         $activeTemplate = Settings::get('active-template');
         $loader = new Twig_Loader_Filesystem($this->templateDir.$activeTemplate);
 
-        if(Settings::get('use-cache') === true){
+        if (Settings::get('use-cache') === true) {
             array_push($twigSettings, ['cache' => Settings::get('application-dir').'/var/cache']);
         }
 
