@@ -25,9 +25,7 @@ class Cim_Frontend_Page
 
     final private function getTemplateFile()
     {
-
-        if($this->templatePath === null)
-        {
+        if ($this->templatePath === null) {
             $className = get_class($this);
             $twigPath = str_replace("Cim_", "", $className);
             $twigPath = str_replace("_", "/", $twigPath);
