@@ -4,7 +4,7 @@ Custom invoice manager is a small php application made from scratch. Why I made 
 
   - To keep track of my invoices.
   - To learn more about OOP PHP (and practice it)
-  - Magic  
+  - Magic ✨
 
 ## Features
 
