@@ -15,7 +15,7 @@ class Cim_Frontend_Page
     protected $templatePath = null;
     private $templateFile = null;
     private $activeTemplate = 'start';
-    private $templateDir = '../../templates/';
+    private $templateDir;
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
@@ -23,6 +23,7 @@ class Cim_Frontend_Page
     public function __construct($requestData)
     {
         $this->templateFile = $this->getTemplateFile();
+        $this->templateDir = Settings::get('application-dir').'/private/templates/';
         $this->loadTemplate($requestData);
     }
 
@@ -42,10 +43,16 @@ class Cim_Frontend_Page
 
     final private function loadTemplate($requestData)
     {
-        $loader = new Twig_Loader_Filesystem($this->templateDir.$this->activeTemplate);
-        $twig = new Twig_Environment($loader, array(
-            'cache' => '../../../var/cache/',
-        ));
+        $twigSettings = array();
+
+        $activeTemplate = Settings::get('active-template');
+        $loader = new Twig_Loader_Filesystem($this->templateDir.$activeTemplate);
+
+        if(Settings::get('use-cache') === true){
+            array_push($twigSettings, ['cache' => Settings::get('application-dir').'/var/cache']);
+        }
+
+        $twig = new Twig_Environment($loader, $twigSettings);
 
         echo $twig->render($this->templateFile, $requestData);
     }

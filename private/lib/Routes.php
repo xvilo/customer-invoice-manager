@@ -66,7 +66,7 @@ class Routes
      * @param null $requestData
      * @return array
      */
-    private function buildReturnData($handlerClass, $requestData = null)
+    private function buildReturnData($handlerClass, $requestData = [])
     {
         return [
             'handler' => $handlerClass,

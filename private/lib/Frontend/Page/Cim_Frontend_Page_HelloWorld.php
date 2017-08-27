@@ -12,5 +12,5 @@
  */
 class Cim_Frontend_Page_HelloWorld extends Cim_Frontend_Page
 {
-    protected $templatePath = 'Frontend/Page/Page/Static/HelloWorld';
+    protected $templatePath = 'Frontend/Page/Static/HelloWorld';
 }
