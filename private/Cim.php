@@ -57,7 +57,7 @@ class Cim
     {
         $route = new Routes($this->getKleinInstance());
         $routeData = $route->getRouteData();
-        die(var_dump($routeData));
+        new $routeData['handler']($routeData['requestData']);
     }
 
     /**

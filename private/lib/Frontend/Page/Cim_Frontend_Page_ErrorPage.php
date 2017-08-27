@@ -12,4 +12,11 @@
  */
 class Cim_Frontend_Page_ErrorPage extends Cim_Frontend_Page
 {
+    /**
+     * Cim_Frontend_Page_ErrorPage constructor.
+     */
+    function __construct()
+    {
+
+    }
 }
