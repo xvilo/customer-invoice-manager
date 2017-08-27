@@ -35,7 +35,9 @@ class Cim_Frontend_Page
      */
     protected function pageData()
     {
-        return [];
+        return [
+            'noPageDataGiven' => true,
+        ];
     }
 
     final private function getTemplateFile()
@@ -65,6 +67,11 @@ class Cim_Frontend_Page
 
         $twig = new Twig_Environment($loader, $twigSettings);
 
+        if(isset($_GET['context'])){
+            // Context parameter is set. Dump all context data for Twig render and exit.
+            echo '<pre>';
+            die(print_r( $this->getTwigData($requestData, $this->pageData()) ));
+        }
         echo $twig->render($this->templateFile, $this->getTwigData($requestData, $this->pageData()));
     }
 
