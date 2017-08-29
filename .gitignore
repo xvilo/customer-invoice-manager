@@ -1,5 +1,5 @@
 # Project Ignores
-settings.php
+/settings.php
 
 # Utility ignores
 .php_cs.cache
