@@ -12,5 +12,42 @@
  */
 class Settings
 {
-    
+    /**
+     * @var Array all settings from settings file.
+     */
+    private $settings;
+
+    /**
+     * @var Settings current instance when set as global.
+     */
+    private static $instance;
+
+    /**
+     * Settings constructor.
+     * @param $settings array of settings. Key => Value pair
+     */
+    public function __construct($settings)
+    {
+        $this->settings = $settings;
+    }
+
+    /**
+     * Make this capsule instance available globally.
+     *
+     * @return void
+     */
+    public function setAsGlobal()
+    {
+        static::$instance = $this;
+    }
+
+    public function get($key)
+    {
+        return $this->settings[$key];
+    }
+
+    public static function getInstance()
+    {
+        return static::$instance;
+    }
 }
