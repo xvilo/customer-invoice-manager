@@ -23,7 +23,7 @@ class Cim_Frontend_Page
     public function __construct($requestData)
     {
         $this->templateFile = $this->getTemplateFile();
-        $this->templateDir = Settings::get('application-dir').'/private/templates/';
+        $this->templateDir = Settings::getInstance()->get('application-dir').'/private/templates/';
         $this->loadTemplate($requestData);
     }
 
@@ -58,17 +58,17 @@ class Cim_Frontend_Page
     {
         $twigSettings = array();
 
-        $activeTemplate = Settings::get('active-template');
+        $activeTemplate = Settings::getInstance()->get('active-template');
         $loader = new Twig_Loader_Filesystem($this->templateDir.$activeTemplate);
 
-        if (Settings::get('use-cache') === true) {
-            array_push($twigSettings, ['cache' => Settings::get('application-dir').'/var/cache']);
+        if (Settings::getInstance()->get('use-cache') === true) {
+            array_push($twigSettings, ['cache' => Settings::getInstance()->get('application-dir').'/var/cache']);
         }
 
         $twig = new Twig_Environment($loader, $twigSettings);
 
         // TODO: Protect this function. Can be accessed and thus exploited by everyone.
-        if(Settings::get('development') AND isset($_GET['context'])){
+        if(Settings::getInstance()->get('development') AND isset($_GET['context'])){
             // Context parameter is set. Dump all context data for Twig render and exit.
             echo '<pre>';
             die(print_r( $this->getTwigData($requestData, $this->pageData()) ));
