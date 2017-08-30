@@ -41,9 +41,18 @@ class Settings
         static::$instance = $this;
     }
 
-    public function get($key)
+    /**
+     * @param $key String The settings key
+     * @param null $default mixed The default if setting is not present
+     * @return mixed|null
+     */
+    public function get($key, $default = null)
     {
-        return $this->settings[$key];
+        if(isset($this->settings[$key])){
+            return $this->settings[$key];
+        }else{
+            return $default;
+        }
     }
 
     public static function getInstance()
