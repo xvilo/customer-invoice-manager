@@ -12,19 +12,36 @@
  */
 class Cim_Frontend_Page
 {
-    protected $templatePath = null;
-    private $templateFile = null;
-    private $activeTemplate = 'start';
-    private $templateDir;
+    protected $templatePath   = null;
+    protected $post           = array();
+    protected $cookies        = array();
+    private   $templateFile   = null;
+    private   $templateDir;
+    private   $_loginPage     = 'Cim_Frontend_page_Login';
+    private   $_requiresLogin = true;
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
+     *
+     * @param $requestData
      */
     public function __construct($requestData)
     {
         $this->templateFile = $this->getTemplateFile();
         $this->templateDir = Settings::getInstance()->get('application-dir').'/private/templates/';
         $this->loadTemplate($requestData);
+
+
+        $this->cookies = is_array($_COOKIE) ? $_COOKIE : array(); //COOKIES
+        $this->post = is_array($_POST) ? $_POST : array(); //POST
+
+        $shouldLogin = $this->shouldLogin();
+        if ($shouldLogin !== false) {
+
+            die(var_dump( $shouldLogin ));
+        }
+
+        return true;
     }
 
 
@@ -40,6 +57,11 @@ class Cim_Frontend_Page
         ];
     }
 
+    /**
+     * Get's correct template file
+     *
+     * @return string
+     */
     final private function getTemplateFile()
     {
         if ($this->templatePath === null) {
@@ -54,6 +76,11 @@ class Cim_Frontend_Page
         return $templateFile;
     }
 
+    /**
+     * Loads template
+     *
+     * @param $requestData
+     */
     final private function loadTemplate($requestData)
     {
         $twigSettings = array();
@@ -61,17 +88,19 @@ class Cim_Frontend_Page
         $activeTemplate = Settings::getInstance()->get('active-template');
         $loader = new Twig_Loader_Filesystem($this->templateDir.$activeTemplate);
 
-        if (Settings::getInstance()->get('use-cache') === true) {
+        if (Settings::getInstance()->get('use-cache', true) === true) {
             array_push($twigSettings, ['cache' => Settings::getInstance()->get('application-dir').'/var/cache']);
         }
 
         $twig = new Twig_Environment($loader, $twigSettings);
 
         // TODO: Protect this function. Can be accessed and thus exploited by everyone.
-        if(Settings::getInstance()->get('development') AND isset($_GET['context'])){
+        if(Settings::getInstance()->get('development', false) AND isset($_GET['context'])){
             // Context parameter is set. Dump all context data for Twig render and exit.
             echo '<pre>';
-            die(print_r( $this->getTwigData($requestData, $this->pageData()) ));
+            print_r( $this->getTwigData($requestData, $this->pageData()) );
+            echo '<pre>';
+            die('<!-- END OF CONTEXT -->');
         }
         echo $twig->render($this->templateFile, $this->getTwigData($requestData, $this->pageData()));
     }
@@ -82,5 +111,26 @@ class Cim_Frontend_Page
             'requestData' => $requestData,
             'pageData' => $pageData
         ];
+    }
+
+    private function parsePostData()
+    {
+        $this->post = $_POST;
+        $_POST = null;
+    }
+
+    private function parseGetData()
+    {
+        $this->get = $_GET;
+        $_GET = null;
+    }
+
+    /**
+     * Checks whether we need to login
+     * @return bool|string false if no need to login, the login page class otherwise
+     */
+    protected function shouldLogin()
+    {
+        return $this->_requiresLogin && is_null(Frontend_Session::get()->getCustomer()) ? $this->_loginPage : false;
     }
 }
