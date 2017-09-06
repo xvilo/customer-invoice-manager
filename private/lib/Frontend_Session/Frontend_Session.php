@@ -1,6 +1,6 @@
 <?php
 
-Class Frontend_Session
+class Frontend_Session
 {
   // neen
 }
