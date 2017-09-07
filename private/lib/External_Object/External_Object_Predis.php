@@ -22,7 +22,7 @@ class External_Object_Predis
     public function __construct()
     {
         try {
-            $redis = new PredisClient();
+            $redis = new Predis\Client();
             /*
                 $redis = new PredisClient(array(
                     "scheme" => "tcp",
@@ -45,7 +45,7 @@ class External_Object_Predis
     /**
      * @return PredisClient
      */
-    static function get()
+    public static function get()
     {
         if(self::$_predisInstance === null){
             self::$_predisInstance = new self();

@@ -10,9 +10,11 @@
 class Frontend_Sessions
 {
     private static $_instance = null;
+    private $_predisInstance;
 
     public function __construct()
     {
+        $this->_predisInstance = External_Object_Predis::get();
     }
 
     public static function get()
