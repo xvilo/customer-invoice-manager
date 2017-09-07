@@ -27,6 +27,12 @@ class Cim_Frontend_Page
      */
     public function __construct($requestData)
     {
+        $shouldLogin = $this->shouldLogin();
+        if ($shouldLogin !== false) {
+
+            die(var_dump( $shouldLogin ));
+        }
+
         $this->templateFile = $this->getTemplateFile();
         $this->templateDir = Settings::getInstance()->get('application-dir').'/private/templates/';
         $this->loadTemplate($requestData);
@@ -34,12 +40,6 @@ class Cim_Frontend_Page
 
         $this->cookies = is_array($_COOKIE) ? $_COOKIE : array(); //COOKIES
         $this->post = is_array($_POST) ? $_POST : array(); //POST
-
-        $shouldLogin = $this->shouldLogin();
-        if ($shouldLogin !== false) {
-
-            die(var_dump( $shouldLogin ));
-        }
 
         return true;
     }
