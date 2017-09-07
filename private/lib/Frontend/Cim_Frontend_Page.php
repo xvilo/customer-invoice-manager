@@ -113,24 +113,12 @@ class Cim_Frontend_Page
         ];
     }
 
-    private function parsePostData()
-    {
-        $this->post = $_POST;
-        $_POST = null;
-    }
-
-    private function parseGetData()
-    {
-        $this->get = $_GET;
-        $_GET = null;
-    }
-
     /**
      * Checks whether we need to login
      * @return bool|string false if no need to login, the login page class otherwise
      */
     protected function shouldLogin()
     {
-        return $this->_requiresLogin && is_null(Frontend_Session::get()->getCustomer()) ? $this->_loginPage : false;
+        return $this->_requiresLogin && is_null(Frontend_Sessions::get()->getCustomer()) ? $this->_loginPage : false;
     }
 }
