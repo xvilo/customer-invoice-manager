@@ -19,7 +19,7 @@ class Frontend_Sessions
 
     public static function get()
     {
-        if(self::$_instance === null){
+        if (self::$_instance === null) {
             self::$_instance = new self();
         }
 
@@ -30,5 +30,4 @@ class Frontend_Sessions
     {
         return false;
     }
-
 }

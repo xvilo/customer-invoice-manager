@@ -15,10 +15,10 @@ class Cim_Frontend_Page
     protected $templatePath   = null;
     protected $post           = array();
     protected $cookies        = array();
-    private   $templateFile   = null;
-    private   $templateDir;
-    private   $_loginPage     = 'Cim_Frontend_page_Login';
-    private   $_requiresLogin = true;
+    private $templateFile   = null;
+    private $templateDir;
+    private $_loginPage     = 'Cim_Frontend_page_Login';
+    private $_requiresLogin = true;
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
@@ -29,8 +29,7 @@ class Cim_Frontend_Page
     {
         $shouldLogin = $this->shouldLogin();
         if ($shouldLogin !== false) {
-
-            die(var_dump( $shouldLogin ));
+            die(var_dump($shouldLogin));
         }
 
         $this->templateFile = $this->getTemplateFile();
@@ -95,10 +94,10 @@ class Cim_Frontend_Page
         $twig = new Twig_Environment($loader, $twigSettings);
 
         // TODO: Protect this function. Can be accessed and thus exploited by everyone.
-        if(Settings::getInstance()->get('development', false) AND isset($_GET['context'])){
+        if (Settings::getInstance()->get('development', false) and isset($_GET['context'])) {
             // Context parameter is set. Dump all context data for Twig render and exit.
             echo '<pre>';
-            print_r( $this->getTwigData($requestData, $this->pageData()) );
+            print_r($this->getTwigData($requestData, $this->pageData()));
             echo '<pre>';
             die('<!-- END OF CONTEXT -->');
         }

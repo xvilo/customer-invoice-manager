@@ -48,9 +48,9 @@ class Settings
      */
     public function get($key, $default = null)
     {
-        if(isset($this->settings[$key])){
+        if (isset($this->settings[$key])) {
             return $this->settings[$key];
-        }else{
+        } else {
             return $default;
         }
     }

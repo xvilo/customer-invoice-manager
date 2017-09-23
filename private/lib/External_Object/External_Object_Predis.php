@@ -30,8 +30,7 @@ class External_Object_Predis
                     "port" => 6379));
             */
             echo "Successfully connected to Redis";
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             echo "<pre>";
             echo "Couldn't connected to Redis";
             echo $e->getMessage();
@@ -47,7 +46,7 @@ class External_Object_Predis
      */
     public static function get()
     {
-        if(self::$_predisInstance === null){
+        if (self::$_predisInstance === null) {
             self::$_predisInstance = new self();
         }
 
