@@ -46,7 +46,7 @@ class Settings
      * @param null $default mixed The default if setting is not present
      * @return mixed|null
      */
-    public function get($key, $default = null)
+    public function getObject($key, $default = null)
     {
         if (isset($this->settings[$key])) {
             return $this->settings[$key];
@@ -55,8 +55,26 @@ class Settings
         }
     }
 
+    public static function getStatic($key, $default = null)
+    {
+        $instance = self::$instance;
+        return $instance->getObject($key, $default);
+    }
+
     public static function getInstance()
     {
         return static::$instance;
+    }
+
+    public function __call($name, $arguments) {
+        if ($name === 'get') {
+            return call_user_func(array($this, 'getObject'), $arguments[0], $arguments[1]);
+        }
+    }
+
+    public static function __callStatic($name, $arguments) {
+        if ($name === 'get') {
+            return call_user_func(array('Settings', 'getStatic'), $arguments[0], $arguments[1]);
+        }
     }
 }
