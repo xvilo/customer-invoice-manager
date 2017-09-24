@@ -42,6 +42,8 @@ class Settings
     }
 
     /**
+     * Get setting by key in object state.
+     *
      * @param $key String The settings key
      * @param null $default mixed The default if setting is not present
      * @return mixed|null
@@ -55,23 +57,54 @@ class Settings
         }
     }
 
+    /**
+     * Get setting by key in static state.
+     * First gets the objects' instance and then calls the function
+     *
+     * @param $key
+     * @param null $default
+     * @return mixed|null
+     */
     public static function getStatic($key, $default = null)
     {
         $instance = self::$instance;
         return $instance->getObject($key, $default);
     }
 
+    /**
+     * Returns instance for global state.
+     *
+     * @return Settings
+     */
     public static function getInstance()
     {
         return static::$instance;
     }
 
+    /**
+     * Maps get function name to be callable in
+     * object and static context.
+     * For object context calls
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed|null
+     */
     public function __call($name, $arguments) {
         if ($name === 'get') {
             return call_user_func(array($this, 'getObject'), $arguments[0], $arguments[1]);
         }
     }
 
+    /**
+     * Maps get function name to be callable in
+     * object and static context.
+     * For object static calls
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed|null
+     */
     public static function __callStatic($name, $arguments) {
         if ($name === 'get') {
             return call_user_func(array('Settings', 'getStatic'), $arguments[0], $arguments[1]);
