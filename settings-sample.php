@@ -14,6 +14,11 @@ $settings = [
         'password' => 'P@ssw00rd',
         'database' => 'database_name',
     ],
+    'redis' => [
+        "scheme" => "tcp",
+        "host" => "127.0.0.1",
+        "port" => 6379
+    ],
     'use-cache' => true,
     'application-dir' => __DIR__,
     'active-template' => 'start',
