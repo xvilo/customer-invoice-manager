@@ -1,1 +1,1 @@
-redis-server ../config/redis.conf
+redis-server `pwd`/private/config/redis.conf
