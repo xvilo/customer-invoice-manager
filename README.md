@@ -1,3 +1,6 @@
+# Warning
+THIS PROJECT IS **WORK IN PROGRESS**. ANY DOCUMENTATION HERE IS SUBJECT TO CHANGE AND CURRENTLY NOT ALWAYS WORKING. 
+
 # Customer invoice manager
 
 Custom invoice manager is a small php application made from scratch. Why I made this application:
@@ -26,6 +29,12 @@ $ composer install
 2) Copy `settings-sample.php` to `settings.php`
 3) Edit settings.php accordingly
 4) Set your http root to `public/`
+5) Install an instance of [https://redis.io](Redis).
+
+## Running
+You need to successfully complete the [#installation](installation steps) first. 
+Then you need a running instance of [https://redis.io](Redis). 
+Now load up your webbrowser.
 
 ## Development
 If you want to read more information about the frontend development process. 
