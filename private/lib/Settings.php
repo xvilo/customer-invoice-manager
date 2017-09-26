@@ -91,6 +91,10 @@ class Settings
      * @return mixed|null
      */
     public function __call($name, $arguments) {
+        if(!isset($arguments[1])){
+            $arguments[1] = null;
+        }
+
         if ($name === 'get') {
             return call_user_func(array($this, 'getObject'), $arguments[0], $arguments[1]);
         }
@@ -106,6 +110,10 @@ class Settings
      * @return mixed|null
      */
     public static function __callStatic($name, $arguments) {
+        if(!isset($arguments[1])){
+            $arguments[1] = null;
+        }
+
         if ($name === 'get') {
             return call_user_func(array('Settings', 'getStatic'), $arguments[0], $arguments[1]);
         }
