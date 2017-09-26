@@ -22,14 +22,14 @@ class External_Object_Predis
     public function __construct()
     {
         try {
-            $redis = new Predis\Client();
-            /*
-                $redis = new PredisClient(array(
-                    "scheme" => "tcp",
-                    "host" => "127.0.0.1",
-                    "port" => 6379));
-            */
-            echo "Successfully connected to Redis";
+            // Get redis Settings
+            $settings = Settings::get('redis');
+
+            // Setup Predis client
+            $redis = new Predis\Client(array(
+                "scheme" => $settings['scheme'],
+                "host" => $settings['host'],
+                "port" => $settings['port']));
         } catch (Exception $e) {
             echo "<pre>";
             echo "Couldn't connected to Redis";
