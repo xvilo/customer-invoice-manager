@@ -30,3 +30,7 @@ $ composer install
 ## Development
 If you want to read more information about the frontend development process. 
 Please use the [DEVELOPMENT.md file](DEVELOPMENT.md)
+
+## Future ToDo:
+  - Fix all feature items!
+  - Implement simple Redis queue with [https://github.com/bernardphp/bernard](Bernard). This will allow one to simple queue e-mails, text messages requiring tasks etc witouth any extra wait time for the user. 
