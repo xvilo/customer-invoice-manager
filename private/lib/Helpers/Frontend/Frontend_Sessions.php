@@ -26,8 +26,18 @@ class Frontend_Sessions
         return self::$_instance;
     }
 
-    public function getUser()
+    /**
+     * @throws Exception;
+     * @return array|bool
+     */
+    public function getCustomer()
     {
-        return false;
+        if(!isset($_COOKIE['cimu'])) {
+            return false;
+        }else{
+            //TODO (@xvilo): Fix session storage from Redis
+            Util::todo('xvilo', 'Fix session storage from Redis');
+            return ['data here'];
+        }
     }
 }

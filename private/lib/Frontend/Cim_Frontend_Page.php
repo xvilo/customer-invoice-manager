@@ -15,10 +15,9 @@ class Cim_Frontend_Page
     protected $templatePath   = null;
     protected $post           = array();
     protected $cookies        = array();
+    protected $_requiresLogin = false;
     private $templateFile   = null;
     private $templateDir;
-    private $_loginPage     = 'Cim_Frontend_page_Login';
-    private $_requiresLogin = false;
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
@@ -27,9 +26,10 @@ class Cim_Frontend_Page
      */
     public function __construct($requestData)
     {
-        $shouldLogin = $this->shouldLogin();
-        if ($shouldLogin !== false) {
-            die(var_dump($shouldLogin));
+        if ($this->shouldLogin() !== false) {
+            $this->setLoginPageData();
+            header('Location: '.  Settings::get('host') . Settings::get('domain') .'/login');
+            exit();
         }
 
         $this->templateFile = $this->getTemplateFile();
@@ -64,6 +64,7 @@ class Cim_Frontend_Page
     final private function getTemplateFile()
     {
         if ($this->templatePath === null) {
+
             $className = get_class($this);
             $twigPath = str_replace("Cim_", "", $className);
             $twigPath = str_replace("_", "/", $twigPath);
@@ -118,6 +119,12 @@ class Cim_Frontend_Page
      */
     protected function shouldLogin()
     {
-        return $this->_requiresLogin && is_null(Frontend_Sessions::get()->getUser()) ? $this->_loginPage : false;
+        return $this->_requiresLogin && is_null(Frontend_Sessions::get()->getCustomer()['login']) ? true : false;
+    }
+
+    private function setLoginPageData()
+    {
+        // @TODO (@sem): Set login page data in session storage. E.g. current URL for auto redirection.
+        return true;
     }
 }

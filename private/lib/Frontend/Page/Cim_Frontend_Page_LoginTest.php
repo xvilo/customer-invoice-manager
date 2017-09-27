@@ -12,7 +12,7 @@
  */
 class Cim_Frontend_Page_LoginTest extends Cim_Frontend_Page
 {
-    private $_requiresLogin = true;
+    protected $_requiresLogin = true;
 
     /**
      * Page data. Array of data used in twig.
