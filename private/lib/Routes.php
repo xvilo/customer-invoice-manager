@@ -40,14 +40,30 @@ class Routes
      */
     private function generateRouteData()
     {
+        /**
+         * Entry/Homepage Route
+         */
         $this->klein->respond('GET', '/', function () {
             $this->routeData = $this->buildReturnData('Cim_Frontend_Page_Entry');
         });
 
+        /**
+         * Hello World Route
+         */
         $this->klein->respond('GET', '/hello-world', function () {
             $this->routeData = $this->buildReturnData('Cim_Frontend_Page_HelloWorld');
         });
 
+        /**
+         * login-test
+         */
+        $this->klein->respond('GET', '/login-test', function () {
+            $this->routeData = $this->buildReturnData('Cim_Frontend_Page_LoginTest');
+        });
+
+        /**
+         * 404 Route
+         */
         $this->klein->onHttpError(function ($code, $router) {
             $returnData = [
                 'code' => $code,
@@ -66,8 +82,8 @@ class Routes
     /**
      * This function easily generates the return array for routes
      *
-     * @param $handlerClass
-     * @param null $requestData
+     * @param string $handlerClass
+     * @param array $requestData
      * @return array
      */
     private function buildReturnData($handlerClass, $requestData = [])

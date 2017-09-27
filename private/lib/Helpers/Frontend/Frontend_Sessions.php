@@ -26,7 +26,7 @@ class Frontend_Sessions
         return self::$_instance;
     }
 
-    public function getCustomer()
+    public function getUser()
     {
         return false;
     }

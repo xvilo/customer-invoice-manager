@@ -18,7 +18,7 @@ class Cim_Frontend_Page
     private $templateFile   = null;
     private $templateDir;
     private $_loginPage     = 'Cim_Frontend_page_Login';
-    private $_requiresLogin = true;
+    private $_requiresLogin = false;
 
     /**
      * Cim_Frontend_Page_ErrorPage constructor.
@@ -118,6 +118,6 @@ class Cim_Frontend_Page
      */
     protected function shouldLogin()
     {
-        return $this->_requiresLogin && is_null(Frontend_Sessions::get()->getCustomer()) ? $this->_loginPage : false;
+        return $this->_requiresLogin && is_null(Frontend_Sessions::get()->getUser()) ? $this->_loginPage : false;
     }
 }
