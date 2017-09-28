@@ -81,6 +81,16 @@ class Routes
         $this->klein->dispatch();
     }
 
+    public function generateServicesData()
+    {
+        /**
+         * Entry/Homepage Route
+         */
+        $this->klein->respond('GET', '/services/login', function () {
+            $this->routeData = $this->buildReturnData('Cim_Frontend_Service_login');
+        });
+    }
+
     public function getRouteData()
     {
         return $this->routeData;
