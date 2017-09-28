@@ -62,6 +62,13 @@ class Routes
         });
 
         /**
+         * login-test
+         */
+        $this->klein->respond('GET', '/login', function () {
+            $this->routeData = $this->buildReturnData('Cim_Frontend_Page_Login');
+        });
+
+        /**
          * 404 Route
          */
         $this->klein->onHttpError(function ($code, $router) {
