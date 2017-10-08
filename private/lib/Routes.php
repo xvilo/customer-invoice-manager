@@ -74,7 +74,6 @@ class Routes
          * 404 Route
 */
         $this->klein->onHttpError(function ($code, $router) {
-
             $returnData = [
                 'code' => $code,
                 'router' => $router,

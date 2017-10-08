@@ -33,7 +33,7 @@ class Cim_Frontend_Service extends Cim_Frontend
         try {
             $pageData = $this->pageData();
             $this->returnArray['data'] = $pageData;
-        } catch(UserException $e) {
+        } catch (UserException $e) {
             $this->returnArray['success'] = false;
             $this->returnArray['reason'] = $e->getMessage();
         }

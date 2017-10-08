@@ -40,7 +40,6 @@ class Cim_Frontend_Page extends Cim_Frontend
     final private function getTemplateFile()
     {
         if ($this->templatePath === null) {
-
             $className = get_class($this);
             $twigPath = str_replace("Cim_", "", $className);
             $twigPath = str_replace("_", "/", $twigPath);

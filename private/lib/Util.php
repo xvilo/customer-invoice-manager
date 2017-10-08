@@ -1,6 +1,7 @@
 <?php
 
-class Util {
+class Util
+{
 
     /**
      * Gets an item from an array if it exists, returns the defaultValue (null by default) otherwise.
@@ -14,14 +15,10 @@ class Util {
     {
         $indexes = self::makeSureIsArray($index);
         $data = $array;
-        foreach($indexes as $subIndex)
-        {
-            if(!isset($data[$subIndex]))
-            {
+        foreach ($indexes as $subIndex) {
+            if (!isset($data[$subIndex])) {
                 return $defaultValue;
-            }
-            else
-            {
+            } else {
                 $data = $data[$subIndex];
             }
         }
@@ -38,8 +35,7 @@ class Util {
      */
     public static function makeSureIsArray($variable)
     {
-        if(!is_array($variable))
-        {
+        if (!is_array($variable)) {
             $variable = array($variable);
         }
 
@@ -76,12 +72,9 @@ class Util {
             "White"                 => "1;37",
         );
 
-        if(!isset($colors[$color]))
-        {
+        if (!isset($colors[$color])) {
             return $string;
-        }
-        else
-        {
+        } else {
             return "\001\033[" . $colors[$color] . "m\002" . $string . "\001\033[0m\002";
         }
     }
