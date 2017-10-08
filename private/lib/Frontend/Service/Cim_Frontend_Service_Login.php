@@ -14,10 +14,22 @@ class Cim_Frontend_Service_Login extends Cim_Frontend_Service
 {
     protected function pageData()
     {
-        throw new UserException('error reason');
+        if(!$username = util::arrayGet($this->post, 'username', false)) {
+            throw new UserException('You need to enter a username');
+        }
 
-        return [
-            'redirect' => '/app',
-        ];
+        if(!$password = util::arrayGet($this->post, 'password', false)) {
+            throw new UserException('You need to enter a password');
+        }
+
+        $userController = UserController::get();
+
+        if($userController->checkLogin($username, $password)) {
+            return [
+                'redirect' => '/app'
+            ];
+        } else {
+            throw new UserException('Wrong credentials');
+        }
     }
 }
