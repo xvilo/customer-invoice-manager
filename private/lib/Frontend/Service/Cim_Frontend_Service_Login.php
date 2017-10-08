@@ -24,10 +24,10 @@ class Cim_Frontend_Service_Login extends Cim_Frontend_Service
 
         $userController = UserController::get();
 
-        if ($userController->checkLogin($username, $password)) {
-            return [
-                'redirect' => '/app'
-            ];
+        if ($userId = $userController->checkLogin($username, $password)) {
+            $userController->setLoginSession($userId);
+
+            return ['redirect' => '/app'];
         } else {
             throw new UserException('Wrong credentials');
         }
