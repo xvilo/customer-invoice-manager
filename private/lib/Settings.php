@@ -81,7 +81,16 @@ class Settings
         return static::$instance;
     }
 
-    private static function handleCalls($name, $arguments)
+    /**
+     * Maps get function name to be callable in
+     * object and static context.
+     * For object context calls
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed|null
+     */
+    public function __call($name, $arguments)
     {
         if (!isset($arguments[1])) {
             $arguments[1] = null;
@@ -95,20 +104,6 @@ class Settings
     /**
      * Maps get function name to be callable in
      * object and static context.
-     * For object context calls
-     *
-     * @param $name
-     * @param $arguments
-     * @return mixed|null
-     */
-    public function __call($name, $arguments)
-    {
-        self::handleCalls($name, $arguments);
-    }
-
-    /**
-     * Maps get function name to be callable in
-     * object and static context.
      * For object static calls
      *
      * @param $name
@@ -117,6 +112,12 @@ class Settings
      */
     public static function __callStatic($name, $arguments)
     {
-        self::handleCalls($name, $arguments);
+        if (!isset($arguments[1])) {
+            $arguments[1] = null;
+        }
+
+        if ($name === 'get') {
+            return call_user_func(array('Settings', 'getStatic'), $arguments[0], $arguments[1]);
+        }
     }
 }
