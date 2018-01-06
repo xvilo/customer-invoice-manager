@@ -11,7 +11,7 @@ class Util
      * @param mixed $defaultValue the optional defaultValue to return if the array does not have array[index]
      * @return mixed array[index] if it exists, defaultValue otherwise.
      */
-    public static function arrayGet($array, $index, $defaultValue = null)
+    public static function arrayGet(array $array, mixed $index, $defaultValue = null)
     {
         $indexes = self::makeSureIsArray($index);
         $data = $array;
@@ -33,7 +33,7 @@ class Util
      * @param mixed $variable the variable that must be an array
      * @return array the original array if $variable was an array, otherwise array($variable)
      */
-    public static function makeSureIsArray($variable)
+    public static function makeSureIsArray($variable) : array
     {
         if (!is_array($variable)) {
             $variable = array($variable);
@@ -51,7 +51,7 @@ class Util
      * @return string a string that will output in the requested color, if the color is defined,
      *                                      the inputted string otherwise.
      */
-    public static function color($color, $string)
+    public static function color(string $color, string $string) : string
     {
         $colors = array(
             "Black"                 => "0;30",
