@@ -11,7 +11,7 @@ class Util
      * @param mixed $defaultValue the optional defaultValue to return if the array does not have array[index]
      * @return mixed array[index] if it exists, defaultValue otherwise.
      */
-    public static function arrayGet(array $array, mixed $index, $defaultValue = null)
+    public static function arrayGet(array $array, $index, $defaultValue = null)
     {
         $indexes = self::makeSureIsArray($index);
         $data = $array;
