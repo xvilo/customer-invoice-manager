@@ -1,4 +1,7 @@
 {
+    "name": "tropicaljuice/cim",
+    "type": "project",
+    "description": "CIM",
     "require": {
         "mikehaertl/phpwkhtmltopdf": "^2.2",
         "illuminate/database": "^5.4",
